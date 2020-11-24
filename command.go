@@ -1,5 +1,7 @@
 package main
 
+const MinArgLength = 2
+
 type Command interface {
 	Handle()
 }
@@ -33,5 +35,5 @@ func fetchCommandName(args []string) string {
 }
 
 func commandIsNotProvidedIn(args []string) bool {
-	return len(args) < 2
+	return len(args) < MinArgLength
 }
