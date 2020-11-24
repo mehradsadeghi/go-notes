@@ -21,10 +21,10 @@ func parseCommand(args []string) Command {
 	return resolveCommand(fetchCommandName(args))
 }
 
-func resolveCommand(command string) Command {
+func resolveCommand(commandName string) Command {
 
-	if _, exists := Commands[command]; exists {
-		return Commands[command]
+	if _, exists := Commands[commandName]; exists {
+		return Commands[commandName]
 	}
 
 	return Commands["default"]
