@@ -7,12 +7,13 @@ type Command interface {
 var Commands = map[string]Command {
 	"new": NewCommand{},
 	"list": ListCommand{},
+	"default": DefaultCommand{},
 }
 
 func parseCommand(args []string) Command {
 
 	if commandIsNotProvidedIn(args) {
-		return DefaultCommand{}
+		return Commands["default"]
 	}
 
 	return resolveCommand(fetchCommandName(args))
@@ -24,7 +25,7 @@ func resolveCommand(command string) Command {
 		return Commands[command]
 	}
 
-	return DefaultCommand{}
+	return Commands["default"]
 }
 
 func fetchCommandName(args []string) string {
